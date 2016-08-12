@@ -18,13 +18,16 @@
     <div id="jsxSyntax"></div>
     <script type="text/babel">
 
-        var CommentBox = React.createClass({ render: function() { return (
-        <div className="commentBox">
-            Hello, world! I am a CommentBox.
-        </div>
-        ); } }); ReactDOM.render(
-        <CommentBox />, document.getElementById('content') );
+        var FirstComponent = React.createClass({
+            render: function (){
+                return (<div>
+                            <h3> This is my first React component.</h3>
+                            <h4 className="desc"> This is description </h4>
+                    </div>);
+            }
+        });
 
+        ReactDOM.render( <FirstComponent />, document.getElementById('content')  );
     </script>
     <script src="/scripts/first-component.js"></script>
 </body>
