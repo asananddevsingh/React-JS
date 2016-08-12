@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Comment List | Example</title>
+    <script src="/libs/react.js"></script>
+    <script src="/libs/react-dom.js"></script>
+    <script src="/libs/browser.min.js"></script>
+
+</head>
+
+<body>
+    <div id="content"></div>
+
+    <script type="text/babel">
+       var CommentList = React.createClass({
+          render: function() {
+            return (
+              <div className="commentList">
+                Hello, world! I am a Comment List.
+              </div>
+            );
+          }
+        });
+
+        var CommentForm = React.createClass({
+          render: function() {
+            return (
+              <div className="commentForm">
+                  Comment Form: <input type="text" id="txtCommentForm" className="commentForm" />
+              </div>
+            );
+          }
+        });
+
+        var CommentBox = React.createClass({
+          render: function() {
+            return (
+              <div className="commentBox">
+                <h1>Comments</h1>
+                <CommentList />
+                <CommentForm />
+              </div>
+            );
+          }
+        });
+
+        ReactDOM.render(<CommentBox />, document.getElementById('content'));
+    </script>
+
+</body>
+
+</html>
