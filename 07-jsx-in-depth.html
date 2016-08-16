@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>React without JSX</title>
+    <script src="/libs/react.js"></script>
+    <script src="/libs/react-dom.js"></script>
+    <script src="/libs/browser.min.js"></script>
+    <script src="/libs/remarkable.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+    <hr>
+    <div id="content"></div>
+    <hr>
+    <div id="compo"></div>
+    <hr>
+    <div id="nComp1"></div>
+    <hr>
+    <div id="nComp2"></div>
+    <script type="text/babel">
+
+        /*Using HTML tag - JSX*/
+        var myDivElement = <div className="foo">This is my first div using JSX</div>;
+        ReactDOM.render(myDivElement, document.getElementById('content'));
+
+        /*Using React.createElement()*/
+        var reactDivElement = React.createElement('div', {style: {color: 'red', fontSize:'24px'}}, 'This is my div using React.createElement()');
+        ReactDOM.render(reactDivElement, document.getElementById('example'));
+
+        /*Using React Component */
+        var MyComponent = React.createClass({
+            render: function(){
+                return (
+                    <h1>Text from React Component</h1>
+                );
+            }
+        });
+        var myElement = <MyComponent someProperty={true} />;
+        ReactDOM.render(myElement, document.getElementById('compo'));
+
+        /* Namespaced Components - Example 1*/
+
+        var MyFormComponent = React.createClass({
+            render: function (){
+                return (<div style={{border: "1px solid black"}}>Example 1 - Namespaed Component: <MyFormComponent.Row /></div>);
+            }
+        });
+
+        MyFormComponent.Row = React.createClass({
+            render: function (){
+                return (<p>This is p tag: <MyFormComponent.Input/></p>);
+            }
+        });
+        MyFormComponent.Input = React.createClass({
+            render: function (){
+                return (<input type="text" />);
+            }
+        });
+
+        ReactDOM.render(<MyFormComponent ></MyFormComponent>, document.getElementById('nComp1'));
+
+        /* Namespaced Components - Example 2*/
+        var App = (
+          React.createElement('div', {style: {border: "2px dotted black"}}, "Example 2 - Namespaed Component: ",
+              React.createElement('p', null), " This is p :",
+              React.createElement('input', null)
+          )
+        );
+
+        ReactDOM.render(App, document.getElementById('nComp2'));
+
+    </script>
+</body>
+
+</html>
