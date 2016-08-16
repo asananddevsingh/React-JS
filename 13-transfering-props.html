@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>React JS</title>
+    <script src="/libs/react.js"></script>
+    <script src="/libs/react-dom.js"></script>
+    <script src="/libs/browser.min.js"></script>
+    <script src="/libs/remarkable.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+    <hr>
+    <div id="example2"></div>
+    <script type="text/babel">
+
+       function FancyCheckbox(props) {
+          var { checked, ...other } = props;
+          var fancyClass = checked ? 'FancyChecked' : 'FancyUnchecked';
+          // `other` contains { onClick: console.log } but not the checked property
+          return (
+            <div {...other} className={fancyClass} />
+          );
+        }
+
+        ReactDOM.render(
+          <FancyCheckbox checked={true} onClick={console.log.bind(console)}>
+            Hello world!
+          </FancyCheckbox>,
+          document.getElementById('example')
+        );
+
+    </script>
+</body>
+
+</html>
+
+
