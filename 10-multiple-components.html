@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>React JS</title>
+    <script src="/libs/react.js"></script>
+    <script src="/libs/react-dom.js"></script>
+    <script src="/libs/browser.min.js"></script>
+    <script src="/libs/remarkable.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+        var Avatar = React.createClass({
+          render: function() {
+            return (
+              <div>
+                <PagePic pagename={this.props.pagename} />
+                <hr/>
+                <PageLink pagename={this.props.pagename} />
+              </div>
+            );
+          }
+        });
+
+        var PagePic = React.createClass({
+          render: function() {
+            return (
+              <img style={{height: "100px", width:"100px"}}  src={'https://graph.facebook.com/' + this.props.pagename + '/picture'} />
+            );
+          }
+        });
+
+        var PageLink = React.createClass({
+          render: function() {
+            return (
+              <a href={'https://www.facebook.com/' + this.props.pagename}>
+                {this.props.pagename}
+              </a>
+            );
+          }
+        });
+
+        ReactDOM.render(
+          <Avatar pagename="Engineering" />,
+          document.getElementById('example')
+        );
+
+    </script>
+</body>
+
+</html>
