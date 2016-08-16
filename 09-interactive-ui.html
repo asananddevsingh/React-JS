@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Spread Attributes</title>
+    <script src="/libs/react.js"></script>
+    <script src="/libs/react-dom.js"></script>
+    <script src="/libs/browser.min.js"></script>
+    <script src="/libs/remarkable.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+        class LikeButton extends React.Component{
+            constructor (){
+                super();
+                this.state = {
+                    liked: false
+                };
+                this.toggleLike = this.handleLike.bind(this);
+                /*
+                    // Other way to achieve the same.
+                    this.toggleLike = () => {
+                    this.setState({liked: !this.state.liked});
+                }*/
+            }
+            handleLike() {
+                this.setState({liked: !this.state.liked});
+            }
+            render(){
+                const text = this.state.liked ? 'liked' : 'haven\'t liked';
+                const bgColor = this.state.liked ? 'green' : 'red';
+                return (
+                    <div>
+                        You <b>{text}</b> this. <span onClick={this.toggleLike} style={{cursor: 'pointer', background:bgColor, color:'white'}}>Click to toggle</span>
+                    </div>
+                );
+            }
+        };
+
+        ReactDOM.render(<LikeButton />, document.getElementById('example'));
+
+    </script>
+</body>
+
+</html>
