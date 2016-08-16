@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Data Model | Example</title>
+    <script src="/libs/react.js"></script>
+    <script src="/libs/react-dom.js"></script>
+    <script src="/libs/browser.min.js"></script>
+    <script src="/libs/remarkable.min.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <hr>
+    <div id="example"></div>
+    <script type="text/babel">
+
+        /* Controlled Component */
+        var ControlledComponent = React.createClass({
+          getInitialState: function() {
+            return {value: 'Controlled Component'};
+          },
+          handleChange: function(event) {
+            this.setState({value: event.target.value});
+          },
+          render: function() {
+            return (
+              <input
+                type="text"
+                value={this.state.value}
+                onChange={this.handleChange}
+              />
+            );
+          }
+        });
+
+        ReactDOM.render(
+          <ControlledComponent />,
+          document.getElementById('content')
+        );
+
+        /* Un Controlled Component */
+        var UnControlledComponent = React.createClass({
+          render: function() {
+            return <input type="text" defaultValue="Un Controlled Component!" />;
+          }
+        });
+
+        ReactDOM.render(
+          <UnControlledComponent />,
+          document.getElementById('example')
+        );
+
+    </script>
+</body>
+
+</html>
