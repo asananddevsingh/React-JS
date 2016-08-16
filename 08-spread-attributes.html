@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Spread Attributes</title>
+    <script src="/libs/react.js"></script>
+    <script src="/libs/react-dom.js"></script>
+    <script src="/libs/browser.min.js"></script>
+    <script src="/libs/remarkable.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+        var Component = React.createClass({
+            render: function(){
+                return (<h3 >Value of props "foo": <span  style={this.props.style} >{this.props.foo}</span> </h3>);
+            }
+
+        })
+        var props = {};
+        props.foo = 'Hello from foo';
+        props.style = {color: 'blue'};
+
+        var component = <Component {...props} />;
+
+        ReactDOM.render(component, document.getElementById('example'));
+
+    </script>
+</body>
+
+</html>
